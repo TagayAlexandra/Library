@@ -4,7 +4,7 @@ import by.itac.mylibrary.controller.Command;
 import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
 import by.itac.mylibrary.service.ServiceProvider;
-import by.itac.mylibrary.service.serviceException.ServiceException;
+import by.itac.mylibrary.service.exception.ServiceException;
 
 public class SaveBook implements Command {
 
@@ -12,8 +12,18 @@ public class SaveBook implements Command {
     @Override
     public String execute(String request) {
         String response;
-        String[] dateBook = request.split(" ");
-        Book book = new Book(Integer.parseInt(dateBook[1]), dateBook[2], dateBook[3], Integer.parseInt(dateBook[4]), dateBook[5]);
+        char paramDelimeter = ' ';
+        String[] dateBook = request.split(String.valueOf(paramDelimeter));
+        int dateID = 1;
+        int author = 2;
+        int bookName = 3;
+        int yearOfPublishing = 4;
+        int status = 5;
+        Book book = new Book(Integer.parseInt(dateBook[dateID]),
+                dateBook[author],
+                dateBook[bookName],
+                Integer.parseInt(dateBook[yearOfPublishing]),
+                dateBook[status]);
         ServiceProvider serviceProvider = ServiceProvider.getInstance();
         BookService bookService = serviceProvider.getBookService();
         try {

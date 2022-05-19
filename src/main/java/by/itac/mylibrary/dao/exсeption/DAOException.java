@@ -1,4 +1,4 @@
-package by.itac.mylibrary.dao.excaptionDao;
+package by.itac.mylibrary.dao.exсeption;
 
 public class DAOException extends Exception {
     public DAOException(String message) {

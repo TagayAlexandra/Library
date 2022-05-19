@@ -1,13 +1,17 @@
 package by.itac.mylibrary.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Book {
+public class Book implements Serializable {
     private int id;
     private String author;
     private String bookName;
     private int yearOfPublishing;
     private String status;
+
+    public Book() {
+    }
 
     public Book(int id, String author, String bookName, int yearOfPublishing, String status) {
         this.id = id;

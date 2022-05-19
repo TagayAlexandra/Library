@@ -4,22 +4,24 @@ import by.itac.mylibrary.controller.Command;
 import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
 import by.itac.mylibrary.service.ServiceProvider;
-import by.itac.mylibrary.service.serviceException.ServiceException;
+import by.itac.mylibrary.service.exception.ServiceException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class FindBookByAuthor implements Command {
+    private final char paramDelimeter = ' ';
     @Override
     public String execute(String request) {
+        String response;
         ServiceProvider provider = ServiceProvider.getInstance();
         BookService service = provider.getBookService();
         try {
-            request = request.substring(request.indexOf(' ') + 1);
+            request = request.substring(request.indexOf(paramDelimeter) + 1);
           List<Book> bookByAuthor =  service.findByAuthor(request);
-          return  (bookByAuthor.isEmpty()) ? "Not book" : bookByAuthor.toString();
+          response = (bookByAuthor.isEmpty()) ? "Not book" : bookByAuthor.toString();
         }catch (ServiceException ex){
-            return  "error";
+           response =  "error";
         }
+        return response;
     }
 }

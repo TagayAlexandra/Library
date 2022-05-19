@@ -1,7 +1,6 @@
 package by.itac.mylibrary.service;
 
-import by.itac.mylibrary.service.impl.BookServiceImpl;
-import by.itac.mylibrary.service.impl.StatusBookServiceImpl;
+import by.itac.mylibrary.service.impl.*;
 
 public final class ServiceProvider {
     private static final ServiceProvider instance = new ServiceProvider();

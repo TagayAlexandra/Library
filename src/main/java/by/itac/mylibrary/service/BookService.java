@@ -1,10 +1,8 @@
 package by.itac.mylibrary.service;
 
-import by.itac.mylibrary.dao.excaptionDao.DAOException;
 import by.itac.mylibrary.entity.Book;
-import by.itac.mylibrary.service.serviceException.ServiceException;
+import by.itac.mylibrary.service.exception.ServiceException;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface BookService {

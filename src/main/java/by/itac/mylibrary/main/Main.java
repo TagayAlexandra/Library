@@ -1,13 +1,21 @@
 package by.itac.mylibrary.main;
 
-import by.itac.mylibrary.controller.Controller;
+
+import by.itac.mylibrary.dao.exсeption.DAOException;
+import by.itac.mylibrary.dao.impl.FileCRUDBookDAOImpl;
+import by.itac.mylibrary.dao.impl.FileFindBookDAOImpl;
+import by.itac.mylibrary.dao.impl.LibraryHost;
+import by.itac.mylibrary.entity.Book;
+import by.itac.mylibrary.service.impl.Validation;
+
+import java.text.ParseException;
+
 
 public class Main {
-    public static void main(String[] args) {
-        Controller controller = new Controller();
-    String s = controller.executeTask("FInd_BoOK_bY_AUTHOR b");
+    public static void main(String[] args) throws DAOException, ParseException {
+        Validation validation = new Validation();
+        System.out.println(validation.yearValid(1));
 
-    System.out.println(s);
 
     }
 }

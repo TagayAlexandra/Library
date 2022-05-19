@@ -1,27 +1,27 @@
 package by.itac.mylibrary.controller.impl;
 
 import by.itac.mylibrary.controller.Command;
-import by.itac.mylibrary.dao.excaptionDao.DAOException;
 import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
 import by.itac.mylibrary.service.ServiceProvider;
-import by.itac.mylibrary.service.serviceException.ServiceException;
-
-import java.io.IOException;
+import by.itac.mylibrary.service.exception.ServiceException;
 
 public class FindBookByID implements Command {
+    private final char paramDelimeter = ' ';
     @Override
     public String execute(String request) {
-         String date = request.substring(request.indexOf(' ')+ 1);
+        String response;
+         String date = request.substring(request.indexOf(paramDelimeter)+ 1);
         int id = Integer.parseInt(date);
          ServiceProvider provider = ServiceProvider.getInstance();
          BookService service = provider.getBookService();
         try {
          Book book = service.findById(id);
-         return (book == null) ? "Not book" : book.toString();
+         response =  (book == null) ? "Not book" : book.toString();
         }
         catch (ServiceException ex) {
-            return "fail";
+            response =  "fail";
         }
+        return response;
     }
 }

@@ -1,9 +1,8 @@
 package by.itac.mylibrary.dao;
 
-import by.itac.mylibrary.dao.excaptionDao.DAOException;
+import by.itac.mylibrary.dao.exсeption.DAOException;
 import by.itac.mylibrary.entity.Book;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface FindBookDAO {

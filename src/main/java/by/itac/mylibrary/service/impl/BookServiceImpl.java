@@ -3,10 +3,10 @@ package by.itac.mylibrary.service.impl;
 import by.itac.mylibrary.dao.CRUDBookDAO;
 import by.itac.mylibrary.dao.DAOProvider;
 import by.itac.mylibrary.dao.FindBookDAO;
-import by.itac.mylibrary.dao.excaptionDao.DAOException;
+import by.itac.mylibrary.dao.exсeption.DAOException;
 import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
-import by.itac.mylibrary.service.serviceException.ServiceException;
+import by.itac.mylibrary.service.exception.ServiceException;
 
 
 import java.util.List;
@@ -16,6 +16,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void save(Book book) throws  ServiceException {
+
+
         DAOProvider provider = DAOProvider.getInstance();
         CRUDBookDAO dao = provider.getBookDAO();
         try {

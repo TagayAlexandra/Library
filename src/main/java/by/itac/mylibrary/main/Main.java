@@ -1,6 +1,6 @@
 package by.itac.mylibrary.main;
 
-
+import by.itac.mylibrary.controller.Controller;
 import by.itac.mylibrary.dao.exсeption.DAOException;
 import by.itac.mylibrary.dao.impl.FileCRUDBookDAOImpl;
 import by.itac.mylibrary.dao.impl.FileFindBookDAOImpl;
@@ -9,13 +9,10 @@ import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.impl.Validation;
 
 import java.text.ParseException;
-
+import java.time.Year;
 
 public class Main {
-    public static void main(String[] args) throws DAOException, ParseException {
-        Validation validation = new Validation();
-        System.out.println(validation.yearValid(1));
-
+    public static void main(String[] args) {
 
     }
 }

@@ -7,22 +7,25 @@ import by.itac.mylibrary.dao.exсeption.DAOException;
 import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
 import by.itac.mylibrary.service.exception.ServiceException;
+import by.itac.mylibrary.service.exception.ValidationException;
 
 
 import java.util.List;
 
 public class BookServiceImpl implements BookService {
+    private final Validation validation = new Validation();
+    private boolean dateValidation;
 
 
     @Override
-    public void save(Book book) throws  ServiceException {
+    public void save(Book book) throws ServiceException {
 
 
         DAOProvider provider = DAOProvider.getInstance();
         CRUDBookDAO dao = provider.getBookDAO();
         try {
             dao.save(book);
-        }catch (DAOException ex){
+        } catch (DAOException ex) {
             throw new ServiceException(ex);
         }
 
@@ -30,14 +33,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findById(int id) throws ServiceException {
-        DAOProvider provider = DAOProvider.getInstance();
-        FindBookDAO dao = provider.getFindBookDAO();
-        try {
-            return dao.findById(id);
-        }catch (DAOException ex){
-            throw new ServiceException(ex);
+    public Book findById(int id) throws ServiceException, ValidationException {
+        dateValidation = validation.validId(id);
+        if (dateValidation) {
+            DAOProvider provider = DAOProvider.getInstance();
+            FindBookDAO dao = provider.getFindBookDAO();
+            try {
+                return dao.findById(id);
+            } catch (DAOException ex) {
+                throw new ServiceException(ex);
+            }
         }
+        throw new ValidationException("id");
     }
 
     @Override
@@ -46,7 +53,7 @@ public class BookServiceImpl implements BookService {
         FindBookDAO dao = provider.getFindBookDAO();
         try {
             return dao.findBookByAuthor(author);
-        }catch (DAOException ex){
+        } catch (DAOException ex) {
             throw new ServiceException(ex);
         }
 
@@ -54,11 +61,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findByYearOfPublishing(int year) throws ServiceException {
+
+
         DAOProvider provider = DAOProvider.getInstance();
         FindBookDAO dao = provider.getFindBookDAO();
         try {
             return dao.findBookByYearOfPublishing(year);
-        }catch (DAOException ex){
+        } catch (DAOException ex) {
             throw new ServiceException(ex);
         }
 

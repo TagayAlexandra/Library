@@ -20,6 +20,7 @@ public class FindBookByAuthor implements Command {
           List<Book> bookByAuthor =  service.findByAuthor(request);
           response = (bookByAuthor.isEmpty()) ? "Not book" : bookByAuthor.toString();
         }catch (ServiceException ex){
+            // log
            response =  "error";
         }
         return response;

@@ -30,6 +30,7 @@ public class SaveBook implements Command {
             bookService.save(book);
             response = "Book save";
         } catch (ServiceException e) {
+            //log
             response = "Book not save";
         }
         return response;

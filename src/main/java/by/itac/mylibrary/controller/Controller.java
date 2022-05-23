@@ -8,7 +8,7 @@ public class Controller {
         Command executionCommand;
 
         char paramDelimeter = ' ';
-        commandName = request.substring(0,request.indexOf(paramDelimeter));
+        commandName = request.substring(0, request.indexOf(paramDelimeter));
         executionCommand = provider.getCommand(commandName);
 
         String response;

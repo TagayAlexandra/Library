@@ -5,30 +5,36 @@ import by.itac.mylibrary.entity.Book;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
+import java.time.temporal.TemporalField;
+import java.time.temporal.ValueRange;
 import java.util.Calendar;
 
 public class Validation {
 
-    public void yearValid(Book book){
-
-    }
-    public boolean yearValid(int date) throws ParseException {
-        String dateFormat = "yyyy";
-       try {
-           DateFormat dateFormat1 = new SimpleDateFormat(dateFormat);
-           dateFormat1.setLenient(false);
-           dateFormat1.parse(String.valueOf(date));
-           return true;
-       }catch (ParseException ex) {
-           return false;
-       }
-
-
-
-
-    }
-    public void yearValid(String date){
-
+    public boolean validYearPublish(int year) {
+        Year bookYear = Year.of(year);
+        return !bookYear.isAfter(Year.now()) && !bookYear.isBefore(Year.of(731));
     }
 
+    public boolean validId(int id) {
+        return id > 0;
+    }
+
+    public boolean validNull(String parameter) {
+        return parameter != null;
+    }
+
+    public boolean validBook(Book book) {
+        if (book == null) {
+            return false;
+        } else if (!validId(book.getId())) {
+            return false;
+        } else if (!validYearPublish(book.getYearOfPublishing())) {
+            return false;
+        } else if (!validNull(book.getAuthor())) {
+            return false;
+        } else return validNull(book.getBookName());
+    }
 }
+

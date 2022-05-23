@@ -21,6 +21,7 @@ public class FindBookByYearOfPublising implements Command {
             List<Book> bookByYear =  service.findByYearOfPublishing(yearOfPublishing);
             response = (bookByYear.isEmpty()) ? "Not book" : bookByYear.toString();
         }catch (ServiceException ex){
+            //log
             response = "error";
         }
 

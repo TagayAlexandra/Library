@@ -37,14 +37,14 @@ public class LibraryHost {
         return library;
     }
 
-    private String getFileName() throws IOException {
-        String fileName;
+    private String getFileName() throws FileNotFoundException {
         Properties properties = new Properties();
         try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/config.properties")) {
             properties.load(fileInputStream);
-            fileName = properties.getProperty("host");
+            return properties.getProperty("host");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return fileName;
     }
 
     private void readFileToList() throws IOException {

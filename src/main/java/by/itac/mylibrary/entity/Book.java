@@ -66,7 +66,10 @@ public class Book implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id && yearOfPublishing == book.yearOfPublishing && Objects.equals(author, book.author) && Objects.equals(bookName, book.bookName) && Objects.equals(status, book.status);
+        return id == book.id && yearOfPublishing == book.yearOfPublishing &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(bookName, book.bookName) &&
+                Objects.equals(status, book.status);
     }
 
     @Override

@@ -7,9 +7,9 @@ import by.itac.mylibrary.service.exception.ValidationException;
 import java.util.List;
 
 public interface BookService {
-    void  save(Book book) throws ServiceException;
+    void  save(Book book) throws ServiceException, ValidationException;
     Book findById(int id) throws ServiceException, ValidationException;
-    List<Book> findByAuthor(String author) throws ServiceException;
-    List<Book> findByYearOfPublishing(int year) throws ServiceException;
+    List<Book> findByAuthor(String author) throws ServiceException, ValidationException;
+    List<Book> findByYearOfPublishing(int year) throws ServiceException, ValidationException;
 
 }

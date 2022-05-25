@@ -11,7 +11,7 @@ import java.util.List;
 public class FileFindBookDAOImpl implements FindBookDAO {
 
     private final LibraryHost libraryHost = LibraryHost.getInstance();
-    private  List<Book> library;
+    private List<Book> library;
 
     @Override
     public Book findById(int id) throws DAOException {
@@ -20,8 +20,8 @@ public class FileFindBookDAOImpl implements FindBookDAO {
         } catch (IOException e) {
             throw new DAOException(e);
         }
-        for (Book book : library){
-            if (book.getId() == id){
+        for (Book book : library) {
+            if (book.getId() == id) {
                 return book;
             }
         }
@@ -30,12 +30,13 @@ public class FileFindBookDAOImpl implements FindBookDAO {
 
     @Override
     public List<Book> findBookByAuthor(String author) throws DAOException {
+        List<Book> bookByAuthor = new ArrayList<>();
         try {
             library = libraryHost.getLibrary();
         } catch (IOException e) {
             throw new DAOException(e);
         }
-        List<Book> bookByAuthor = new ArrayList<>();
+
         for (Book book : library) {
             if (book.getAuthor().equals(author)) {
                 bookByAuthor.add(book);
@@ -46,14 +47,14 @@ public class FileFindBookDAOImpl implements FindBookDAO {
 
     @Override
     public List<Book> findBookByYearOfPublishing(int year) throws DAOException {
+        List<Book> bookByYearOfPublishing = new ArrayList<>();
         try {
             library = libraryHost.getLibrary();
         } catch (IOException e) {
             throw new DAOException(e);
         }
-        List<Book> bookByYearOfPublishing = new ArrayList<>();
-        for (Book book :library){
-            if (book.getYearOfPublishing() == year){
+        for (Book book : library) {
+            if (book.getYearOfPublishing() == year) {
                 bookByYearOfPublishing.add(book);
             }
         }

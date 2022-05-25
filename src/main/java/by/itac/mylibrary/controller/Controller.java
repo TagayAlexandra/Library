@@ -1,9 +1,10 @@
 package by.itac.mylibrary.controller;
 
+
 public class Controller {
     private final CommandProvider provider = new CommandProvider();
 
-    public String executeTask(String request) {
+    public String executeTask(String request)  {
         String commandName;
         Command executionCommand;
 

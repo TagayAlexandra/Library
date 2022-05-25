@@ -34,6 +34,8 @@ public class Validation {
             return false;
         } else if (!validNull(book.getAuthor())) {
             return false;
+        } else if (!validNull(book.getStatus())) {
+            return false;
         } else return validNull(book.getBookName());
     }
 }

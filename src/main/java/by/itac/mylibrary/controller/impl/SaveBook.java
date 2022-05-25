@@ -5,6 +5,7 @@ import by.itac.mylibrary.entity.Book;
 import by.itac.mylibrary.service.BookService;
 import by.itac.mylibrary.service.ServiceProvider;
 import by.itac.mylibrary.service.exception.ServiceException;
+import by.itac.mylibrary.service.exception.ValidationException;
 
 public class SaveBook implements Command {
 
@@ -32,6 +33,9 @@ public class SaveBook implements Command {
         } catch (ServiceException e) {
             //log
             response = "Book not save";
+        } catch (ValidationException e) {
+            response = "wrong date ";
+
         }
         return response;
     }

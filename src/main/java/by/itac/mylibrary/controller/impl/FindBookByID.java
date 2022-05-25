@@ -27,7 +27,7 @@ public class FindBookByID implements Command {
             response = (book == null) ? "Not book" : book.toString();
         } catch (ServiceException ex) {
             // log
-            response = "service problem. Wait ";
+            response = "error ";
         } catch (ValidationException e) {
             response = "wrong date ";
         }

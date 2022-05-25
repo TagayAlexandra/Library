@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class LibraryHost {
 
+
     private static LibraryHost instance = null;
 
     private final List<Book> library = new ArrayList<>();
@@ -38,8 +39,9 @@ public class LibraryHost {
     }
 
     private String getFileName() throws FileNotFoundException {
+        String path = getClass().getClassLoader().getResource("config.properties").getPath();
         Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/config.properties")) {
+        try (FileInputStream fileInputStream = new FileInputStream(path)) {
             properties.load(fileInputStream);
             return properties.getProperty("host");
         } catch (IOException e) {
